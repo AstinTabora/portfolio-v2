@@ -1,0 +1,475 @@
+/* --- VARIABLES & RESET --- */
+:root {
+    --bg-light: #f4f4f4;
+    --bg-dark: #111111;
+    --text-light: #ffffff;
+    --text-dark: #111111;
+    --text-grey: #888888;
+    --accent-gold: #d4c4a8;
+    --border-light: rgba(255, 255, 255, 0.15);
+    --border-dark: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background-color: var(--bg-light);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- SECTION 1: HERO --- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    color: var(--text-light);
+    overflow: hidden;
+}
+
+/* Background Placeholder */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #999;
+    /* This simulates the background image */
+    background-image: url('Hero-bg.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.1); /* Subtle darkening */
+}
+
+/* Hero Header Grid */
+.hero-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-col {
+    padding: 0 1rem;
+    position: relative;
+}
+
+.sub-text {
+    opacity: 0.7;
+}
+
+/* Vertical Grid Lines logic */
+.header-col:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2rem; /* Extend up */
+    height: 100vh; /* Extend down through entire hero */
+    width: 1px;
+    background: rgba(255,255,255,0.15);
+    pointer-events: none;
+}
+
+.social-col {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-icon {
+    text-align: right;
+    cursor: pointer;
+}
+
+.bar {
+    width: 20px;
+    height: 1px;
+    background: #fff;
+    margin: 6px 0;
+}
+
+/* Hero Center Content */
+.hero-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.profile-wrapper {
+    width: 256px;  /* size of profile picture */
+    height: 256px;
+    border-radius: 50%; /*circle */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* stroke */
+    padding: 8px; /* space between border and image */
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(5px); /* Keeps that glassy feel */
+}
+
+/* The actual image styling */
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Ensures image fills circle without stretching */
+    display: block;
+}
+
+/* Hover Effect */
+.profile-wrapper:hover {
+    transform: scale(1.1); /* Grows slightly on hover */
+    border-color: #ffffff; /* Border gets brighter */
+}
+ 
+/*.plus-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(5px);
+    font-size: 1.2rem;
+    font-weight: 300;
+}*/
+
+.name-1 {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* The Big Title Typography */
+.big-title {
+    margin-top: 100px;
+    font-family: 'Funnel Display', sans-serif;
+    font-weight: 400;
+    font-size: 17vw;
+    line-height: 0.6;
+    text-transform: uppercase;
+    letter-spacing:-1vw;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* The Custom O shape */
+.pill-shape {
+    display: inline-block;
+    width: 18vw;
+    height: 10vw;
+    border: 1.5vw solid #fff;
+    border-radius: 100px;
+    margin: 0 1vw;
+    background: transparent;
+}
+
+.cursive-subtitle {
+    filter: drop-shadow(0px 5px 5px #00000093);
+    font-family: 'Ballet', serif;
+    font-style: italic;
+    font-size: 128px;
+    letter-spacing:-10px;
+    color: rgb(255, 225, 52);
+    margin-top: -3vw;
+    z-index: 3;
+}
+
+/* --- SECTION 2: PORTFOLIO --- */
+.portfolio {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 4rem 2rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ccc;
+    padding-top: 1rem;
+    margin-bottom: 4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.portfolio-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.portfolio-intro h2 {
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.portfolio-text {
+    display: flex;
+    gap: 3rem;
+}
+
+.portfolio-text > p {
+    flex: 1;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+.style-box {
+    flex: 1;
+
+}
+
+.style-box h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.style-box p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    width: 100%;
+    height: 500px; /* You can set this to ANY height (e.g. 400px, 800px) */
+    border-radius: 12px;
+    overflow: hidden; /* This crops the oversized video */
+    background: #000;
+}
+
+.gallery-item iframe {
+      position: absolute;
+    top: 50%;
+    left: 50%;
+    /* We make the iframe significantly larger than the container.
+       This ensures that whether the container is tall or wide, 
+       the video content will cover the edges. */
+    width: 300%; 
+    height: 110%; 
+    transform: translate(-50%, -50%);
+}
+
+
+/* Custom Corner marks */
+.corner-mark {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-color: rgba(255,255,255,0.7);
+    border-style: solid;
+    pointer-events: none;
+    z-index: 2;
+}
+.tl { top: 15px; left: 15px; border-width: 1px 0 0 1px; }
+.tr { top: 15px; right: 15px; border-width: 1px 1px 0 0; }
+.bl { bottom: 15px; left: 15px; border-width: 0 0 1px 1px; }
+.br { bottom: 15px; right: 15px; border-width: 0 1px 1px 0; }
+
+
+/* --- SECTION 3: SERVICES --- */
+.services {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 6rem 2rem;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    gap: 4rem;
+}
+
+.services-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding-bottom: 2rem;
+}
+
+.services-left h2 {
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+}
+
+.service-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #aaa;
+    max-width: 400px;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+    width: fit-content;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.cta-btn:hover {
+    color: var(--text-grey);
+    border-color: var(--text-grey);
+}
+
+.cta-btn span { margin-left: 10px; }
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border-light);
+}
+
+.service-item {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.3s;
+}
+
+.service-item:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.service-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.service-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit:scale-down
+    ;
+}
+
+.service-num {
+    font-size: 0.8rem;
+    font-family: 'Funnel Display', sans-serif;
+    color: #666;
+}
+
+.service-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.service-item p {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.4;
+}
+
+/* Remove right border for even children */
+.services-grid .service-item:nth-child(2n) {
+    border-right: none;
+}
+
+/* --- ANIMATION CLASSES --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+    .portfolio-intro { grid-template-columns: 1fr; }
+    .portfolio-intro h2 { font-size: 3rem; margin-bottom: 2rem; }
+    
+    .services { grid-template-columns: 1fr; }
+    .services-left { margin-bottom: 2rem; min-height: auto; }
+    
+    .big-title { font-size: 15vw; }
+    .pill-shape { width: 22vw; height: 12vw; border-width: 1vw; }
+    
+    .hero-header { grid-template-columns: 1fr 1fr; }
+    .header-col:nth-child(2), .header-col:nth-child(3) { display: none; }
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        height: 400px;
+    }
+    /* Adjust iframe height for mobile screens */
+    .gallery-item iframe {
+        height: 100%;
+        width: 177%; /* Stretches width to cover height */
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .services-grid .service-item { border-right: none; }
+    .portfolio-text { flex-direction: column; gap: 1.5rem; }
+    .gallery-item { height: 400px; }
+}
